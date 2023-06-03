@@ -1,0 +1,32 @@
+[
+    {
+        "username": "dave1",
+        "roles": {
+            "User": 2001
+        },
+        "password": "$2b$10$oEbHZlazDHE1YnnJ4XdpGuGh9a/JZOO7Xe6WZtRRsSMgprxMXnKza",
+        "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRhdmUxIiwiaWF0IjoxNjMzOTkyMjkwLCJleHAiOjE2MzQwNzg2OTB9.U85HVX_gcDZkHHSRWeo7AHfIe7q9i03dGW2ed3fHqAk"
+    },
+    {
+        "username": "Walter1",
+        "roles": {
+            "user": 2001
+        },
+        "password": "Aa$12345"
+    },
+    {
+        "username": "Wal1",
+        "roles": {
+            "user": 2001
+        },
+        "password": "$2b$10$bXoTN4NOrMsgKNR2JliYRuSxKtjIoZHJWo5tYMYDsEi.Nv3sofakG"
+    },
+    {
+        "username": "maxdein",
+        "roles": {
+            "User": 2001
+        },
+        "password": "$2b$10$X6uvso.t14PPiPxvhMNEH.xpb2I6naAWqwpxX8IRaDLJCfkQWG5DO",
+        "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1heGRlaW4iLCJpYXQiOjE2ODIzNzY3NzcsImV4cCI6MTY4MjQ2MzE3N30.zPNGCFL_evmBbfdxeUa1IrdTFl7jP-wB1QLqNgEkOgg"
+    }
+]
