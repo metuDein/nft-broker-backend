@@ -14,7 +14,6 @@ const { logger } = require('./middleware/logEvents');
 const  errorHandler  = require('./middleware/errorHandler');
 
 
-
 connectDb()
 
 app.use(logger);
@@ -22,6 +21,7 @@ app.use(cookieParser())
 
 app.use(express.urlencoded({extended : false}));
 app.use(express.json())
+app.use(express.static(join(__dirname, '/public')))
 
 
 // app.use(credentials);
@@ -44,6 +44,9 @@ app.use('/getuser', require('./routes/getUserWallet'));
 app.use('/getuserassets', require('./routes/getUserAssets'));
 app.use('/createusernft', require('./routes/api/userAssets'));
 
+
+
+app.use('/', require('./routes/root'));
 
 // home page data
 app.use('/getmoralisnft', require('./routes/moralis'));
