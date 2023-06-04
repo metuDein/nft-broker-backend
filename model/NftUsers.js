@@ -1,65 +1,100 @@
 const mongoose = require('mongoose');
-const Schema =  mongoose.Schema;
+const Schema = mongoose.Schema;
 
 
 const nftUsers = new Schema({
-    user : {
-        type : String
+    userName: {
+        type: String
     },
-    contractAddress : {
-        type : String,
-        required : true
+    contractAddress: {
+        type: String,
+        required: true
     },
-    balance : {
-        type  : Number,
-        default : 0
+    balance: {
+        type: Number,
+        default: 0
     },
-    assets : {
-        allAssets :{
-        type : String,
+    assets: {
+        allAssets: {
+            itemData: {
+                itemId: String,
+                itemName: String,
+                Quantity: Number,
+                itemPrice: String,
+                date: {
+                    type: Date,
+                    default: Date.now
+                },
+                netWork: String
+            }
         },
-        collectedAssets  : {
-            type : String
+        collectedAssets: {
+            itemData: {
+                itemId: String,
+                itemName: String,
+                Quantity: Number,
+                itemPrice: String,
+                date: {
+                    type: Date,
+                    default: Date.now
+                },
+                netWork: String
+            }
         },
-        CreatedAssets : {
-            type : String
+        createdAssets: {
+            itemData: {
+                itemId: String,
+                itemName: String,
+                Quantity: Number,
+                itemPrice: String,
+                date: {
+                    type: Date,
+                    default: Date.now
+                },
+                netWork: String
+            }
         }
     },
-    favorites : {
-        type : String,
+    favorites: {
+        item: {
+            itemId: String,
+            itemName: String,
+
+        }
+
     },
-    verified : {
-        type : Boolean,
-        default : false
+    verified: {
+        type: Boolean,
+        default: false
     },
-    transactable : {
-        type : Boolean,
-        default : false
+    transactable: {
+        type: Boolean,
+        default: false
     },
-    roles : {
-        User : {
-            type : Number,
-            default : 2001
+    roles: {
+        User: {
+            type: Number,
+            default: 2001
         },
-        Admin : Number
+        Admin: Number
     },
-    privateKey : {
-        type : String,
+    privateKey: {
+        type: String,
     },
-    favourite: {
-        item : String,
+
+    cart: {
+        item: {
+            Quantity: Number,
+            paid: {
+                type: Boolean,
+                default: false
+            },
+            itemId: String
+        }
+
     },
-    cart : {
-        item  : String,
-        Quantity : Number,
-        paid : {
-            type : Boolean,
-            default  :false
-        },
-        itemprice : Number
-    },
-    refreshToken : String,
+    refreshToken: String,
 });
 
 
-module.exports  = mongoose.model('Users', nftUsers);
+module.exports = mongoose.model('Users', nftUsers);

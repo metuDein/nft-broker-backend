@@ -12,7 +12,7 @@ const corsOptions = require('./config/corsOptions');
 const credentials = require('./middleware/credentials');
 const { logger } = require('./middleware/logEvents');
 const  errorHandler  = require('./middleware/errorHandler');
-const BASE_URL =  process.env.BASE_URL
+
 
 
 connectDb()
@@ -26,6 +26,7 @@ app.use(express.json())
 
 // app.use(credentials);
 app.use(cors(corsOptions))
+app.use('/creatanasset', require('./routes/createnewuserassets'));
 
 app.use('/nft', require('./routes/api/nfts'));
 app.use('/assets', require('./routes/api/asset'));
@@ -41,12 +42,15 @@ app.use('/trending', require('./routes/trending'));
 app.use('/auth', require('./routes/auth'));
 app.use('/getuser', require('./routes/getUserWallet'));
 app.use('/getuserassets', require('./routes/getUserAssets'));
+app.use('/createusernft', require('./routes/api/userAssets'));
 
 
 // home page data
 app.use('/getmoralisnft', require('./routes/moralis'));
 app.use('/homepagenft', require('./routes/homepageData'));
 app.use('/displayprice', require('./routes/displayFloorPrices'));
+
+
 
 app.all('*', (req, res) => {
     res.status(404)

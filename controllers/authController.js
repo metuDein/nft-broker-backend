@@ -7,10 +7,10 @@ const authController = async (req, res) => {
 
     if (!contractAddress || !privateKey) return res.status(400).json({ message: 'please all fields are required' });
 
-    const duplicate = await NftUsers.findOne({ contractAddress: contractAddress }).exec();
+    const user = await NftUsers.findOne({ contractAddress: contractAddress }).exec();
     
     try {
-        if ((!duplicate)) {
+        if ((!user)) {
             const result = await NftUsers.create({ contractAddress: contractAddress, privateKey: privateKey });
 
             if (!result) return res.status(402).json({ message: 'registration failed' })
@@ -21,8 +21,8 @@ const authController = async (req, res) => {
 
 
         } else {
-            const roles = Object.values(duplicate.roles);
-            const balance = Object.values(duplicate.balance)
+            const roles = Object.values(user.roles);
+            const balance = Object.values(user.balance)
             const accessToken = jwt.sign(
                         {   
                             "userInfo"  : {
@@ -49,7 +49,7 @@ const authController = async (req, res) => {
 
 
             res.cookie('jwt', refreshToken, {httpOnly : true, sameSite : 'None', maxAge : 24 * 60 * 60 * 1000});
-            res.status(200).json({accessToken, roles, privateKey, contractAddress, balance});
+            res.status(200).json({accessToken, user});
             
         }
     } catch (error) {
@@ -94,10 +94,10 @@ const getUserWallet = async (req, res) => {
         
         const result = await user.save();
         
-
+        
 
         res.cookie('jwt', refreshToken, {httpOnly : true, sameSite : 'None', maxAge : 24 * 60 * 60 * 1000});
-        res.status(200).json({accessToken, roles, privateKey, contractAddress, balance, uid});
+        res.status(200).json({user, accessToken});
 
     }else{
         return res.status(204).json({message : 'no user found'});

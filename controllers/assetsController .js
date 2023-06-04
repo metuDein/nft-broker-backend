@@ -36,7 +36,7 @@ const createAssets = async (req, res) => {
 
     if (!token_address || !token_id || !name || !image || !block_number_minted) return res.status(403).json({ message: 'all fields are required' })
 
-    const duplicate = await Assets.findOne({ name: name, token_id: token_id, image: image });
+    const duplicate = await Assets.findOne({ name: name, image: image });
 
     if (!duplicate) {
         try {
