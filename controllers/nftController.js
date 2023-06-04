@@ -9,6 +9,14 @@ const getNfts = async (req, res) => {
     res.json(nft);
 }
 
+const getAllAssets = async (req, res) => {
+    const assets = await Assets.find({})
+    if(!assets) return res.status(204).json({message : 'no content found'});
+
+    res.status(200).json(assets);
+    
+}
+
 const createNewAsset = async (req, res) => {
     const { name, categories, floorPrice, floorPriceUsd, network, blockChain, contractAddress, logo } = req.body
 

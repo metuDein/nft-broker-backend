@@ -21,14 +21,20 @@ app.use(cookieParser())
 
 app.use(express.urlencoded({extended : false}));
 app.use(express.json())
-app.use(express.static(join(__dirname, '/public')))
+app.use('/', express.static(join(__dirname, '/public')))
 
 
 // app.use(credentials);
 app.use(cors(corsOptions))
 app.use('/creatanasset', require('./routes/createnewuserassets'));
 
+
+// display data
+
+
+
 app.use('/nft', require('./routes/api/nfts'));
+app.use('/getallassets', require('./routes/getallAssets'));
 app.use('/assets', require('./routes/api/asset'));
 app.use('/getcollection', require('./routes/getCollection'));
 app.use('/getcollectionassets', require('./routes/getCollectionAssets'));
@@ -37,6 +43,8 @@ app.use('/getnft', require('./routes/nftdata'));
 app.use('/display', require('./routes/displayNft'));
 app.use('/getother', require('./routes/getOther')); 
 app.use('/trending', require('./routes/trending'));
+
+
 
 // auth route
 app.use('/auth', require('./routes/auth'));
