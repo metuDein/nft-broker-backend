@@ -31,7 +31,13 @@ const assets = new Schema({
     },
     blockChain : String,
     
-
+    categories : {
+        name : String
+    },
+    trending : {
+        type : Boolean,
+        default : false
+    }
 },
 {
     timestamps : true
