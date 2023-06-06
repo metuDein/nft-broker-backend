@@ -32,7 +32,7 @@ const assets = new Schema({
     blockChain : String,
     
     categories : {
-        name : String,
+        type : String,
         default : 'NFTs'
     },
     trending : {
