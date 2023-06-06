@@ -30,18 +30,7 @@ const assets = new Schema({
         required: true,
     },
     blockChain : String,
-    activities : {
-        txtype : String,
-        txDate : {
-
-        },
-        amount : Number,
-        shortDescription : String
-    },
-    description: {
-        type : String,
-        default : 'N/a'
-    } 
+    
 
 },
 {

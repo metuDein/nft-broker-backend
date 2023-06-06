@@ -1,19 +1,9 @@
 const Assets = require('../model/Assets');
-const NftUsers = require('../model/NftUsers');
-const UserAssets = require('../model/UserAssets');
-
 
 
 const getAllAssets = async (req, res) => {
-    const { contractAddress } = req?.body;
 
-    if (!contractAddress) return res.status(400).json({message : 'no contract address given'});
-
-    const user = await NftUsers.findOne({contractAddress : contractAddress });
-
-    if(!user) return res.status(400).json({message : 'user not found'});
-
-    const assets = await Assets.find({token_address : user.contractAddress});
+    const assets = await Assets.find();
 
     if(!assets) return res.status(204).json({message : 'you no assets'});
 
@@ -21,8 +11,7 @@ const getAllAssets = async (req, res) => {
 
 }
 
-
-const createAssets = async (req, res) => {
+const createanAsset = async(req, res) => {
     const { name, image, contractAddress, supply, price, blockChain } = req.body;
 
     if (!contractAddress || !name || !image || !supply || !price || !blockChain) return res.status(403).json({ message: 'all fields are required' })
@@ -47,7 +36,6 @@ const createAssets = async (req, res) => {
         res.status(409).json({ duplicate });
 
     }
-
 }
 
 
@@ -68,7 +56,8 @@ const editAsset = async (req, res) => {
 
     if(!result) return res.status(403).json({message : 'update failed please retry'});
     res.status(200).json({message : 'updated successfully'});
-}
+};
+
 
 const deleteAssets = async (req, res) => {
     const { id } = req.body;
@@ -85,7 +74,6 @@ const deleteAssets = async (req, res) => {
 }
 
 
-
 const getAnAsset = async (req, res) => {
     const { id } = req.params
     if(!id) return res.status(400).json({ message: ` item id required` });
@@ -98,12 +86,10 @@ const getAnAsset = async (req, res) => {
 
 }
 
-
-module.exports = {
+module.exports = { 
     getAllAssets,
-    createAssets,
+    createanAsset,
     editAsset,
     deleteAssets,
     getAnAsset
 }
-

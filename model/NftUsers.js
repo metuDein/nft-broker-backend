@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 
 const nftUsers = new Schema({
     userName: {
-        type: String
+        type: String,
+        default : 'new user'
     },
     contractAddress: {
         type: String,
@@ -14,45 +15,9 @@ const nftUsers = new Schema({
         type: Number,
         default: 0
     },
-    assets: {
-        allAssets: {
-            itemData: {
-                itemId: String,
-                itemName: String,
-                Quantity: Number,
-                itemPrice: String,
-                date: {
-                    type: Date,
-                    default: Date.now
-                },
-                netWork: String
-            }
-        },
-        collectedAssets: {
-            itemData: {
-                itemId: String,
-                itemName: String,
-                Quantity: Number,
-                itemPrice: String,
-                date: {
-                    type: Date,
-                    default: Date.now
-                },
-                netWork: String
-            }
-        },
-        createdAssets: {
-            itemData: {
-                itemId: String,
-                itemName: String,
-                Quantity: Number,
-                itemPrice: String,
-                date: {
-                    type: Date,
-                    default: Date.now
-                },
-                netWork: String
-            }
+    purchases : {
+        purchaseItem : {
+            id : String
         }
     },
     favorites: {
@@ -80,6 +45,7 @@ const nftUsers = new Schema({
     },
     privateKey: {
         type: String,
+        required : true
     },
 
     cart: {
@@ -92,6 +58,10 @@ const nftUsers = new Schema({
             itemId: String
         }
 
+    },
+    image : {
+        type : String,
+        default : ''
     },
     refreshToken: String,
 });

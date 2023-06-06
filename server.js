@@ -36,6 +36,7 @@ app.use('/creatanasset', require('./routes/createnewuserassets'));
 app.use('/nft', require('./routes/api/nfts'));
 app.use('/getallassets', require('./routes/getallAssets'));
 app.use('/assets', require('./routes/api/asset'));
+app.use('/user', require('./routes/api/userAssets'));
 app.use('/getcollection', require('./routes/getCollection'));
 app.use('/getcollectionassets', require('./routes/getCollectionAssets'));
 app.use('/assetsget', require('./routes/assetsDisplay'));
@@ -48,6 +49,9 @@ app.use('/trending', require('./routes/trending'));
 
 // auth route
 app.use('/auth', require('./routes/auth'));
+app.use('/adminuser', require('./routes/api/AdminUser'));
+app.use('/adminassets', require('./routes/api/AdminAssets'));
+
 app.use('/getuser', require('./routes/getUserWallet'));
 app.use('/getuserassets', require('./routes/getUserAssets'));
 app.use('/createusernft', require('./routes/api/userAssets'));
