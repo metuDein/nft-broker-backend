@@ -7,6 +7,10 @@ const nftUsers = new Schema({
         type: String,
         default : 'new user'
     },
+    userEmail : {
+        type : String,
+        default : ''
+    },
     contractAddress: {
         type: String,
         required: true
@@ -28,6 +32,7 @@ const nftUsers = new Schema({
         }
 
     },
+
     verified: {
         type: Boolean,
         default: false

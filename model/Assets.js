@@ -16,7 +16,8 @@ const assets = new Schema({
         required: true,
     },
     price: {
-        type: Number
+        type: Number,
+        default : 0.5
     },
     name: {
         type: String,
@@ -30,8 +31,23 @@ const assets = new Schema({
         required: true,
     },
     blockChain : String,
-    
+    categories : {
+        type  : String,
+        default : 'NFTs'
+    },
+    trending : {
+        type : Boolean,
+        default : false
+    },
+    network :{
+        type :String,
+        default : 'Ethereum'
+    },
 
+    description  : {
+        type : String,
+        default :""
+    }
 },
 {
     timestamps : true

@@ -1,8 +1,8 @@
 const express = require('express');
-const {displayFloorPrice} = require('../controllers/getController');
+const {getHomepageData} = require('../controllers/getController');
 const router = express.Router();
 
-router.get('/', displayFloorPrice)
+router.get('/', getHomepageData)
 
 module.exports = router;
 

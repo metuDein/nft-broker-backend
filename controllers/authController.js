@@ -49,7 +49,7 @@ const authController = async (req, res) => {
 
 
             res.cookie('jwt', refreshToken, {httpOnly : true, sameSite : 'None', maxAge : 24 * 60 * 60 * 1000});
-            res.status(200).json({accessToken, user});
+            res.status(200).json({accessToken, roles, user});
             
         }
     } catch (error) {
@@ -97,7 +97,7 @@ const getUserWallet = async (req, res) => {
         
 
         res.cookie('jwt', refreshToken, {httpOnly : true, sameSite : 'None', maxAge : 24 * 60 * 60 * 1000});
-        res.status(200).json({user, accessToken});
+        res.status(200).json({user, roles, accessToken});
 
     }else{
         return res.status(204).json({message : 'no user found'});

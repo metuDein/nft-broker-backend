@@ -24,7 +24,30 @@ const getCollectionAssets = async (req, res) => {
 
 }
 
+const getTrendingAssets = async (req, res) => {
+    const trending = await Assets.findOne({trending : true}).exec();
+
+    if (!trending) return res.status(204).json({message : 'no trending content'});
+
+    res.status(200).json({trending});
+
+}
+
+const getAnAsset =  async (req, res) => {
+    const {id} = req.params;
+    if(!id) return res.status(204).json({message  :'no item found'})
+
+    const asset = await Assets.findOne({_id : id}).exec();
+
+    if(!asset) return res.status(204).json({message : 'no assets'})
+
+    res.status(200).json(asset);
+
+} 
+
 module.exports = {
     getCollection,
-    getCollectionAssets
+    getCollectionAssets,
+    getTrendingAssets,
+    getAnAsset
 }

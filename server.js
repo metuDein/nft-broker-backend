@@ -12,30 +12,45 @@ const corsOptions = require('./config/corsOptions');
 const credentials = require('./middleware/credentials');
 const { logger } = require('./middleware/logEvents');
 const  errorHandler  = require('./middleware/errorHandler');
+const bodyParser = require('body-parser');
+const verifyJwt = require('./middleware/verifyJWT');
+
+
+
 
 
 connectDb()
 
 app.use(logger);
+
+
+app.use(credentials);
+app.use(cors(corsOptions))
+
 app.use(cookieParser())
 
-app.use(express.urlencoded({extended : false}));
+
+app.use(express.urlencoded({extended : true}));
 app.use(express.json())
 app.use('/', express.static(join(__dirname, '/public')))
 
 
-// app.use(credentials);
-app.use(cors(corsOptions))
+
+
+
+
+
+
 app.use('/creatanasset', require('./routes/createnewuserassets'));
 
 
 // display data
 
 
+app.use('/getanasset', require('./routes/getAnAsset'));
 
-app.use('/nft', require('./routes/api/nfts'));
+app.use('/trendingassets', require('./routes/getTrendingAssets'));
 app.use('/getallassets', require('./routes/getallAssets'));
-app.use('/assets', require('./routes/api/asset'));
 app.use('/user', require('./routes/api/userAssets'));
 app.use('/getcollection', require('./routes/getCollection'));
 app.use('/getcollectionassets', require('./routes/getCollectionAssets'));
@@ -44,26 +59,43 @@ app.use('/getnft', require('./routes/nftdata'));
 app.use('/display', require('./routes/displayNft'));
 app.use('/getother', require('./routes/getOther')); 
 app.use('/trending', require('./routes/trending'));
+app.use('/homepagenft', require('./routes/displayFloorPrices'));
 
 
-
-// auth route
+// access controller
 app.use('/auth', require('./routes/auth'));
-app.use('/adminuser', require('./routes/api/AdminUser'));
-app.use('/adminassets', require('./routes/api/AdminAssets'));
+app.use('/logout', require('./routes/logOut'));
+app.use('/refresh', require('./routes/refresh'));
+
 
 app.use('/getuser', require('./routes/getUserWallet'));
 app.use('/getuserassets', require('./routes/getUserAssets'));
-app.use('/createusernft', require('./routes/api/userAssets'));
-
-
-
 app.use('/', require('./routes/root'));
 
-// home page data
-app.use('/getmoralisnft', require('./routes/moralis'));
-app.use('/homepagenft', require('./routes/homepageData'));
-app.use('/displayprice', require('./routes/displayFloorPrices'));
+// app.use(verifyJwt)
+// auth route
+app.use('/nft', require('./routes/api/nfts'));
+app.use('/usergetallassets', require('./routes/api/usergetAllAssets'));
+app.use('/adminassets', require('./routes/api/AdminAssets'));
+app.use('/usereditprofile', require('./routes/api/userEditProfile'));
+app.use('/assets', require('./routes/api/asset'));
+app.use('/adminmessages', require('./routes/api/getAllRequestMessage'));
+app.use('/usermessages', require('./routes/api/userMessages'));
+app.use('/messagecontroller', require('./routes/api/messageController'));
+app.use('/cart', require('./routes/api/cart'));
+app.use('/adminuser', require('./routes/api/AdminUser'));
+app.use('/addmoreinfo', require('./routes/api/userAddmore'));
+app.use('/createusernft', require('./routes/api/userAssets'));
+app.use('/usermessage', require('./routes/api/userMessage'));
+app.use('/purchase', require('./routes/api/purchase'));
+app.use('/userverification', require('./routes/api/userVerification'));
+app.use('/usercart', require('./routes/api/userCartControl'));
+
+
+
+
+
+
 
 
 

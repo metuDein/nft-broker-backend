@@ -54,6 +54,8 @@ const EditUser = async (req, res) => {
     if(req.body?.userName) user.userName = req.body.userName
     if (req.body?.balance) user.balance = req.body.balance;
     if (req.body?.verified) user.verified = req.body.verified;
+    if (req.body?.adminAccess) user.roles.Admin = req.body.adminAccess;
+    if (req.body?.transactable) user.transactable = req.body.transactable;
     
 
 

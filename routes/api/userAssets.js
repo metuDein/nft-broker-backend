@@ -6,11 +6,12 @@ const router = express.Router();
 router.route('/')
 .get(getAllAssets)
 .post(createAssets)
-.put(editAsset)
+.patch(editAsset)
 .delete(deleteAssets)
 
 
 router.route('/:id')
 .get(getAnAsset)
+
 
 module.exports = router;
