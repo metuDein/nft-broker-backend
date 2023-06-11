@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express');
 const app = express();
-const moralis = require('moralis').default
+
 const PORT = process.env.PORT || 3500;
 const mongoose = require('mongoose')
 const connectDb = require('./config/dbConn');
@@ -12,7 +12,7 @@ const corsOptions = require('./config/corsOptions');
 const credentials = require('./middleware/credentials');
 const { logger } = require('./middleware/logEvents');
 const  errorHandler  = require('./middleware/errorHandler');
-const bodyParser = require('body-parser');
+
 const verifyJwt = require('./middleware/verifyJWT');
 
 
@@ -24,7 +24,7 @@ connectDb()
 app.use(logger);
 
 
-app.use(credentials);
+// app.use(credentials);
 app.use(cors(corsOptions))
 
 
@@ -110,15 +110,15 @@ app.all('*', (req, res) => {
     }
 })
 
-app.use(errorHandler)
+app.use(errorHandler);
 
-moralis.start({
-    apiKey :'IBfgrhz6Z9enJorfKKZgL0LfLZn8C8XBuKqXKqbJO1zUb69xiTUIA9iJwUAiqn2H'
-}).then(() => {
+
+
+
+
+
     
 mongoose.connection.once('open', () => {
     console.log('connected to mongoDb');
     app.listen(PORT, () => {    console.log(`app running on ${PORT}`);})
-})
-
 })
