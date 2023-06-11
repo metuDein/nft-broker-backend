@@ -31,13 +31,20 @@ const assets = new Schema({
         required: true,
     },
     blockChain : String,
+<<<<<<< HEAD
     categories : {
         type  : String,
+=======
+    
+    categories : {
+        type : String,
+>>>>>>> 8a9a6e200e7b561d7c84fce1459301dd59a853b1
         default : 'NFTs'
     },
     trending : {
         type : Boolean,
         default : false
+<<<<<<< HEAD
     },
     network :{
         type :String,
@@ -47,6 +54,8 @@ const assets = new Schema({
     description  : {
         type : String,
         default :""
+=======
+>>>>>>> 8a9a6e200e7b561d7c84fce1459301dd59a853b1
     }
 },
 {
