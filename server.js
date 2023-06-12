@@ -45,6 +45,9 @@ app.use(cookieParser())
 
 // display data
 app.use('/allassets', require('./routes/allassets'));
+app.use('/allusers', require('./routes/allusers'));
+app.use('/allmessages', require('./routes/allmessages'));
+app.use('/allcartitems', require('./routes/allcartitems'));
 
 
 
