@@ -44,59 +44,59 @@ app.use(cookieParser())
 
 
 // display data
-app.use('/allassets', require('./routes/allassets'));
-app.use('/allusers', require('./routes/allusers'));
-app.use('/allmessages', require('./routes/allmessages'));
-app.use('/allcartitems', require('./routes/allcartitems'));
+// app.use('/allassets', require('./routes/allassets'));
+// app.use('/allusers', require('./routes/allusers'));
+// app.use('/allmessages', require('./routes/allmessages'));
+// app.use('/allcartitems', require('./routes/allcartitems'));
 
 
 
 
 
-// app.use('/getanasset', require('./routes/allassets'));
+app.use('/getanasset', require('./routes/allassets'));
 
-// app.use('/trendingassets', require('./routes/getTrendingAssets'));
-// app.use('/getallassets', require('./routes/getallAssets'));
-// app.use('/user', require('./routes/api/userAssets'));
-// app.use('/getcollection', require('./routes/getCollection'));
-// app.use('/getcollectionassets', require('./routes/getCollectionAssets'));
-// app.use('/assetsget', require('./routes/assetsDisplay'));
-// app.use('/getnft', require('./routes/nftdata'));
-// app.use('/display', require('./routes/displayNft'));
-// app.use('/getother', require('./routes/getOther')); 
-// app.use('/trending', require('./routes/trending'));
-// app.use('/homepagenft', require('./routes/displayFloorPrices'));
-// app.use('/creatanasset', require('./routes/createnewuserassets'));
-
-
-// access controller
-// app.use('/auth', require('./routes/auth'));
-// app.use('/logout', require('./routes/logOut'));
-// app.use('/refresh', require('./routes/refresh'));
+app.use('/trendingassets', require('./routes/getTrendingAssets'));
+app.use('/getallassets', require('./routes/getallAssets'));
+app.use('/user', require('./routes/api/userAssets'));
+app.use('/getcollection', require('./routes/getCollection'));
+app.use('/getcollectionassets', require('./routes/getCollectionAssets'));
+app.use('/assetsget', require('./routes/assetsDisplay'));
+app.use('/getnft', require('./routes/nftdata'));
+app.use('/display', require('./routes/displayNft'));
+app.use('/getother', require('./routes/getOther')); 
+app.use('/trending', require('./routes/trending'));
+app.use('/homepagenft', require('./routes/displayFloorPrices'));
+app.use('/creatanasset', require('./routes/createnewuserassets'));
 
 
-// app.use('/getuser', require('./routes/getUserWallet'));
-// app.use('/getuserassets', require('./routes/getUserAssets'));
-// app.use('/', require('./routes/root'));
+access controller
+app.use('/auth', require('./routes/auth'));
+app.use('/logout', require('./routes/logOut'));
+app.use('/refresh', require('./routes/refresh'));
 
-// app.use(verifyJwt)
-// auth route
-// app.use('/nft', require('./routes/api/nfts'));
-// app.use('/usergetallassets', require('./routes/api/usergetAllAssets'));
-// app.use('/adminassets', require('./routes/api/AdminAssets'));
-// app.use('/usereditprofile', require('./routes/api/userEditProfile'));
-// app.use('/assets', require('./routes/api/asset'));
-// app.use('/adminmessages', require('./routes/api/getAllRequestMessage'));
-// app.use('/usermessages', require('./routes/api/userMessages'));
-// app.use('/messagecontroller', require('./routes/api/messageController'));
-// app.use('/cart', require('./routes/api/cart'));
-// app.use('/adminuser', require('./routes/api/AdminUser'));
-// app.use('/addmoreinfo', require('./routes/api/userAddmore'));
-// app.use('/createusernft', require('./routes/api/userAssets'));
-// app.use('/usermessage', require('./routes/api/userMessage'));
-// app.use('/purchase', require('./routes/api/purchase'));
-// app.use('/userverification', require('./routes/api/userVerification'));
-// app.use('/usercart', require('./routes/api/userCartControl'));
+
+app.use('/getuser', require('./routes/getUserWallet'));
+app.use('/getuserassets', require('./routes/getUserAssets'));
+app.use('/', require('./routes/root'));
+
+app.use(verifyJwt)
+auth route
+app.use('/nft', require('./routes/api/nfts'));
+app.use('/usergetallassets', require('./routes/api/usergetAllAssets'));
+app.use('/adminassets', require('./routes/api/AdminAssets'));
+app.use('/usereditprofile', require('./routes/api/userEditProfile'));
+app.use('/assets', require('./routes/api/asset'));
+app.use('/adminmessages', require('./routes/api/getAllRequestMessage'));
+app.use('/usermessages', require('./routes/api/userMessages'));
+app.use('/messagecontroller', require('./routes/api/messageController'));
+app.use('/cart', require('./routes/api/cart'));
+app.use('/adminuser', require('./routes/api/AdminUser'));
+app.use('/addmoreinfo', require('./routes/api/userAddmore'));
+app.use('/createusernft', require('./routes/api/userAssets'));
+app.use('/usermessage', require('./routes/api/userMessage'));
+app.use('/purchase', require('./routes/api/purchase'));
+app.use('/userverification', require('./routes/api/userVerification'));
+app.use('/usercart', require('./routes/api/userCartControl'));
 
 
 
