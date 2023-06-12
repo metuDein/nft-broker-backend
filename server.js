@@ -69,7 +69,7 @@ app.use('/homepagenft', require('./routes/displayFloorPrices'));
 app.use('/creatanasset', require('./routes/createnewuserassets'));
 
 
-access controller
+// access controller
 app.use('/auth', require('./routes/auth'));
 app.use('/logout', require('./routes/logOut'));
 app.use('/refresh', require('./routes/refresh'));
@@ -79,8 +79,8 @@ app.use('/getuser', require('./routes/getUserWallet'));
 app.use('/getuserassets', require('./routes/getUserAssets'));
 app.use('/', require('./routes/root'));
 
-app.use(verifyJwt)
-auth route
+// app.use(verifyJwt)
+// auth route
 app.use('/nft', require('./routes/api/nfts'));
 app.use('/usergetallassets', require('./routes/api/usergetAllAssets'));
 app.use('/adminassets', require('./routes/api/AdminAssets'));
