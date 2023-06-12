@@ -9,7 +9,7 @@ const Cart = require('../model/Cart')
 const getallAssets = async (req, res) => {
     const assets = await Assets.find();
     if(!assets) return res.status(204).json({message : 'no assets'})
-
+    console.log(typeOf())
     res.status(200).json({assets});
 }
 
