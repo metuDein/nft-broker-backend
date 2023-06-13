@@ -8,11 +8,11 @@ const getUserCart = async (req, res) => {
 
     if(!contractAddress) return res.status(400).json({message : 'user address required'});
 
-    const cartItems = await Cart.find({ cartOwner : contractAddress, paid : false });
+    const cartItems = await Cart.find({ cartOwner : contractAddress});
 
     if (!cartItems) return res.status(204).json({message : 'no cart items'});
 
-    res.status(200).json(cartItems);
+    res.json({cartItems});
 }
 
 const deleteCartItem =  async (req, res) => {

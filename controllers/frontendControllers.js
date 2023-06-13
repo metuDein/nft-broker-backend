@@ -1,51 +1,53 @@
-const Assets = require('../model/Assets');
-const NftUsers = require('../model/NftUsers');
-const RequestMessages = require('../model/RequestMessages');
-const Cart = require('../model/Cart')
+const NftCollection = require('../model/NftCollection');
+const Assets = require('../model/Assets')
 
 
+const getCollection = async (req, res) => {
+    const {contractAddress} = req.body;
+    if(!contractAddress) return res.status(400).json({message : 'please retrun contact address'});
+
+    const collection = await NftCollection.findOne({contractAddress : contractAddress});
+    if(!collection) return res.status(204).json();
 
 
-const getallAssets = async (req, res) => {
-    const assets = await Assets.find();
-    if(!assets) return res.status(204).json({message : 'no assets'})
-    console.log(typeOf(assets))
+    res.status(200).json({collection});
+}
+
+const getCollectionAssets = async (req, res) => {
+    const {contractAddress} = req.body;
+    if(!contractAddress) return res.status(400).json({message : 'please retrun contact address'});
+
+    const assets = await Assets.find({token_address : contractAddress})
+    if(!assets) return res.status(204).json();
+
     res.status(200).json({assets});
-}
-
-
-const getAllusers = async (req, res) => {
-    const users = await NftUsers.find();
-
-    if(!users) return res.status(204).json({message : 'no users'})
-    res.status(200).json({users});
-
-
-}
-const getAllmessages = async (req, res) => {
-    const messages = await RequestMessages.find();
-
-    if(!messages) return res.status(204).json({message : 'no messages'})
-    res.status(200).json({messages});
-
-
-}
-const getAllcartitems = async (req, res) => {
-    const cartitems = await Cart.find();
-
-    if(!cartitems) return res.status(204).json({message : 'no cartitems'})
-    res.status(200).json({cartitems});
 
 }
 
+const getTrendingAssets = async (req, res) => {
+    const trending = await Assets.find({trending : true});
 
+    if (!trending) return res.status(204).json({message : 'no trending content'});
 
+    res.status(200).json(trending);
+
+}
+
+const getAnAsset =  async (req, res) => {
+    const {id} = req.params;
+    if(!id) return res.status(204).json({message  :'no item found'})
+
+    const asset = await Assets.findOne({_id : id}).exec();
+
+    if(!asset) return res.status(204).json({message : 'no assets'})
+
+    res.status(200).json(asset);
+
+} 
 
 module.exports = {
-    getallAssets,
-    getAllusers,
-    getAllmessages,
-    getAllcartitems
+    getCollection,
+    getCollectionAssets,
+    getTrendingAssets,
+    getAnAsset
 }
-
-

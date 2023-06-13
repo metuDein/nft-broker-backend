@@ -3,12 +3,8 @@ const fs = require('fs');
 const Moralis = require('moralis').default;
 const fsPromises = require('fs').promises;
 const { join } = require('path');
-const nftDb = {
-    nfts: require('../model/nft.json'),
-    setNfts: function (data) {
-        this.nfts = data
-    }
-}
+const Assets =  require('../model/Assets')
+
 
 const NftCollection = require('../model/NftCollection');
 
@@ -89,9 +85,8 @@ const getNftOther = async (req, res) => {
 }
 
 const getHomepageData = async (req, res) => {
-    const nft = await NftCollection.find().limit(32).exec();
+    const nft = await Assets.find().limit(40).exec();
     if (!nft) return res.status(204);
-    console.log(nft.length);
     res.json(nft);
 }
 const getTrendingData = async (req, res) => {

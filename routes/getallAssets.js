@@ -1,8 +1,11 @@
 const { getAllAssets } = require('../controllers/getAllCollectionandAssets')
-const router =  require('express').Router()
+const express = require('express');
+
+const router =  express.Router()
 
 
-router.get('/', getAllAssets);
+router.route('/')
+.get(getAllAssets);
 
 
 

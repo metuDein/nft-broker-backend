@@ -8,7 +8,7 @@ const addToCart = async (req, res) => {
     if(!userAddress ||  !itemImage ||  !quantity ||  !itemId || !price || !itemName) return res.status(400).json({message : 'all field required'});
 
 
-    const duplicate = await Cart.find({  paid : false, cartOwner : userAddress});
+    const duplicate = await Cart.findOne({  cartOwner : userAddress, itemImage : itemImage}).exec();
 
 
     if(duplicate) {
@@ -16,7 +16,7 @@ const addToCart = async (req, res) => {
 
         duplicate.price = duplicate.quantity * duplicate.price;
 
-        const result1 = await duplicate.save()
+       const result1 = await duplicate.save()
 
         if(!result1) return res.status(400).json({message : 'failed'});
 

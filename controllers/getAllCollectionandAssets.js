@@ -3,7 +3,7 @@ const Assets = require('../model/Assets');
 
 
 const getAllAssets = async (req, res) => {
-    const assets = await Assets.find().limit(50).exec();
+    const assets = await Assets.find()
     if(!assets) return res.status(204).json({message : 'no content found'});
 
     res.status(200).json(assets);

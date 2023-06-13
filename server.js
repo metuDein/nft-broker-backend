@@ -53,14 +53,14 @@ app.use(cookieParser())
 
 
 
-app.use('/getanasset', require('./routes/allassets'));
+app.use('/getanasset', require('./routes/getanasset'));
 
 app.use('/trendingassets', require('./routes/getTrendingAssets'));
 app.use('/getallassets', require('./routes/getallAssets'));
 app.use('/user', require('./routes/api/userAssets'));
 app.use('/getcollection', require('./routes/getCollection'));
 app.use('/getcollectionassets', require('./routes/getCollectionAssets'));
-app.use('/assetsget', require('./routes/assetsDisplay'));
+// app.use('/assetsget', require('./routes/assetsDisplay'));
 app.use('/getnft', require('./routes/nftdata'));
 app.use('/display', require('./routes/displayNft'));
 app.use('/getother', require('./routes/getOther')); 

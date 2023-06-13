@@ -28,9 +28,8 @@ const addTopurchases = async (req, res) => {
 
     if (cartItem) {
 
-        cartItem.paid = true;
 
-        const result3 = await cartItem.save()
+        const result3 = await cartItem.deleteOne({_id : itemId});
 
         if (!result3) return res.status(403).json({ message: 'transaction failed' });
         return res.status(200).json({ message: 'transaction succeded' });

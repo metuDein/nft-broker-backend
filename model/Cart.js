@@ -17,6 +17,10 @@ const cart = new Schema({
     itemImage : String,
     price : Number, 
     quantity : Number, 
+    completed : {
+        type : Number,
+        default : 0
+    },
     paid  :{
         type : Boolean,
         default : false

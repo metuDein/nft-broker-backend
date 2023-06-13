@@ -17,7 +17,6 @@ const createanAsset = async(req, res) => {
     if (!contractAddress || !name || !image || !supply || !price || !blockChain) return res.status(400).json({ message: ` all fields required` });
     if (!duplicate) {
         try {
-
             const result = await Assets.create({token_address : contractAddress, name : name, block_number_minted : supply, image : image, price : price, description: description  });
 
             if (!result) return res.status(400).json({ message: `error creating asset` })
